@@ -1,13 +1,13 @@
 altgraph==0.10.2
 bdist-mpkg==0.5.0
 dj-database-url==0.4.2
-dj-static==0.0.6
 Django==1.11.4
-gunicorn==19.7.1
 macholib==1.5.1
+modulegraph==0.10.4
 pbr==3.1.1
+psycopg2==2.6.2
 py2app==0.7.3
 pytz==2013.7
 virtualenv==15.1.0
 virtualenv-clone==0.2.6
-whitenoise==3.3.0
+whitenoise==3.2
