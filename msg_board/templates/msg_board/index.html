@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h2>{{ header }}</h2><br />
+{{ login_status }} <br />
+
+    {% if not request.user.is_authenticated %}
+
+    <form class="login" action="" method="post">{% csrf_token %}
+      {{ login_form.as_p }}
+      <input type="submit" value="Login" class="submit">
+    </form>
+    <p>
+      <small>
+        <a href="{% url 'msg_board:create_account' %}">Create an account</a> | 
+        <a href="{% url 'msg_board:guest_login' 'home' %}">Continue as a guest</a>
+      </small> 
+    </p>
+    {% endif %}
+
+    {% if request.user.is_authenticated %}
+    <small><a href="{% url 'msg_board:logout' %}">Logout</a></small><br />
+    {% endif %}
+
+{{ error_message }}<br />
+{{ http_response }}
+<div id="locations">
+<h3>Surf spots</h3>
+{% for location in locations %}
+<a href="{% url 'msg_board:message_board' location.name %}">
+  {{ location }}
+</a><br />
+{% endfor %}
+</div>
+
+  <form class="col-2" action="{% url 'msg_board:vote' %}" method="post">
+    {% csrf_token %}
+    What's your go-to ride?<br />
+    {{ board_poll_form.as_p }}
+    <button type='submit'>Vote!</button>&nbsp;&nbsp;&nbsp;
+    <div class="poll-box"></div>
+    <span class="poll-results pointer">View results</span>
+  </form>
+<br /><br /><br />
+
+<script type="text/javascript">
+
+var xhr = new XMLHttpRequest();
+var results; //global variable to store polls results
+
+function getResults() { //replace localhost with domain name in production
+xhr.open('GET', 'http://localhost:8080/msg_board/vote', true);
+xhr.onload = function () {
+    if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200) {
+            results = xhr.responseText;
+        }
+    }
+};
+xhr.send(null);
+}
+getResults();
+
+function togglePoll() {
+  var pollBox = document.querySelector('div.poll-box');
+  var resultsSpan = document.querySelector('span.poll-results');
+  if (!pollBox.className.includes('data')) {
+    getResults();
+    pollBox.className = 'poll-box data'; //class is only a flag to allow routine to add innerHTML
+    pollBox.innerText = results;
+    resultsSpan.innerText = "Hide results";
+  } else {
+    pollBox.className = 'poll-box';
+    pollBox.innerHTML = "";
+    resultsSpan.innerText = "View results";
+  }
+}
+
+document
+  .querySelector('.poll-results')
+  .addEventListener('click', togglePoll);
+
+$('h2').hide().fadeIn(2500);
+</script>
+{% endblock content %}
+
+

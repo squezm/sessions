@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div>
+
+<h3>Please login to post to the message boards.</h3>
+
+    {% if not request.user.is_authenticated %}
+    <form class="login" action="" method="post">{% csrf_token %}
+      {{ login_form.as_p }}
+      <input type="submit" value="Login" class="submit">
+    </form>
+    <p>
+    <small><a href="{% url 'msg_board:guest_login' location %}">Continue as a guest</a></small> | 
+    {% endif %}
+    <small><a href="{% url 'msg_board:message_index' %}">Back to Locations</a></small>
+    </p>
+
+  {% if request.user.is_authenticated %}
+    <small><a href="{% url 'msg_board:logout' %}">Logout</a></small><br />
+    {% endif %}
+</div>
+
+{% endblock content %}

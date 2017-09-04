@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+  {{ error_message }}<br />
+  <small><a href="{% url 'login_site' %}">Login</a></small></br />
+  <small><a href="{% url 'msg_board:message_index' %}">Back to locations</a></small></br />
+</div>
+
+{% endblock content %}

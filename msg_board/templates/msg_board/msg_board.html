@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ location }}</h2>
+<small><a href="{% url 'msg_board:message_index' %}">Back to Locations</a></small><br />
+{% if error_message %}
+<p>{{ error_message }}</p>
+{% endif %}
+
+<div class="col-6">
+
+{% if not guest_user %}
+  <form class="comment" action="" method="post"> {% csrf_token %}
+  {{ msg_form.as_p }}
+  <input type="submit" value="Post it" class="submit">
+  </form>
+{% endif %}
+
+{% if guest_user %}
+  <small>Guests may read posts, but only registered users may post a Session.</small>
+{% endif %}
+
+</div>
+
+<div class="col-6">
+  <ul>{% for comment in comment_list %}
+    <li>
+      <small>
+        Posted by {{ comment.username }} on {{ comment.time }}
+      </small><br />
+    <h6>
+      {{ comment.size }} | 
+      {{ comment.quality }} | 
+      {{ comment.time_of_day }} session
+    </h6>
+    <p class="comment">{{ comment.comment }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script type="text/javascript">
+  $('h2').hide().fadeIn(1000);
+</script>
+{% endblock content %}
+

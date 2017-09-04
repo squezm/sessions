@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+<title>SESSIONS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="text/javascript" src="{% static 'jQuery/jquery.js' %}"></script>
+</head>
+<body>
+
+<div class="menu">
+    
+    <ul>
+      <a href="{% url 'msg_board:message_index' %}" class="nav-link"><li class="menu-list">Home</li></a>
+      <a href="{% url 'msg_board:create_account' %}" class="nav-link"><li class="menu-list">Sign Up</li></a>
+      <li class="menu-list"><a class="nav-link" href="{% url 'msg_board:message_index' %}">Locations</a></li>
+      <li class="menu-list"><a class="nav-link">News</a></li>
+      <li class="menu-list"><a class="nav-link">Team Riders</a></li>
+      <li class="menu-list"><a class="nav-link">Surf Shop</a></li>
+      <li class="menu-list"><a class="nav-link">About SESSIONS</a></li>
+    </ul>
+  </div>
+<div class="fullpage">
+<div class="container">
+
+  <div class="header windowframe">
+    <img src="{% static 'images/nav.jpg' %}" class="nav-button navigate">
+    <span class="header-text"> SESSIONS </span>
+    <a href="{% url 'msg_board:message_index' %}">
+      <img src="{% static 'images/home.jpg' %}" class="nav-button shim-up">
+    </a>
+  </div>
+  
+  <div class="content">
+  {% block content %}
+  {% endblock content %}
+  </div>
+
+  <div class="footer windowframe"></div>
+
+</div><!--end container -->
+</div><!-- end fullpage -->
+
+<style type="text/css">
+/*seems easier to use a style block in the base template to include static tags for fonts than to relative namespace them in an external stylesheet*/
+@font-face{
+  font-family: "timeburner";
+  src: url("{% static 'fonts/timeburnernormal.ttf' %}");
+}
+@font-face{
+  font-family: "neoteric";
+  src: url("{% static 'fonts/NEOTERIC.ttf' %}");
+}
+body {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  background: linear-gradient( 30deg, yellow, white 20%, blue 95%);
+  background-attachment: fixed;
+}
+p > select {
+  width: 20em;
+}
+div.container{
+  width: 40em;
+  background-color: rgba(0, 0, 0, 0.065);
+  margin: 0px auto 0px auto;
+}
+span.header-text{
+  font-family: "neoteric";
+  color: rgba(240, 220, 20, 1);
+  position: relative;
+  top: -0.8em;
+  left: 0.6em;
+}
+p > label{
+  text-align: right;
+  width: 6em;
+  float: left;
+  padding-right: 10px;
+}
+label[for="id_board_choice_0"]{
+  text-align: left;
+  width: auto;
+  float: none;
+  padding-right: none;
+}
+form.login{
+  width: 22.5em;
+}
+form.comment{
+  width: 25em;
+  position: relative;
+  left: -1.5em;
+}
+input.submit{
+  float: right;
+}
+.content {
+  width: 100%;
+  padding: 10px 0 10px 0;
+  margin-top: 30px;
+  margin-left: 0.5em;
+}
+textarea {
+  height: 6em;
+  width: 24em;
+}
+h2, h3, h4, h5, h6 {
+  font-weight: lighter;
+}
+ul {
+  margin-left: -3em;
+}
+li {
+  padding: .2em;
+  list-style: none;
+}
+li:nth-child(2n+1):not(.menu-list){
+  background-color: rgba(0, 0, 0, 0.065);
+}
+li > label, input[type="radio"]{
+  cursor: pointer;
+}
+li.menu-list{
+  cursor: pointer;
+  margin-bottom: 2em;
+}
+li.menu-list:hover, li.menu-list:active{
+  box-shadow: 0 1px 1px 0 black;
+}
+input.thin {
+  width: 9em;
+}
+div.windowframe{
+  width: 100%;
+  height: 3em;
+  background-color: rgba(0, 0, 100, 0.85);
+  position: fixed;
+  left: 0px;
+  z-index: 1000;
+}
+div.menu {
+  position: fixed;
+  left: 0;
+  display: none;
+  z-index: 2000;
+  background-color: rgba(0, 0, 120, 0.99);
+  color: white;
+  font-family: neoteric;
+  font-weight: lighter;
+  text-align: center;
+  top: 3em;
+  padding: 2em;
+  width: 15em;
+}
+ul.indent{
+  position: relative;
+  left: 1em;
+}
+div.header {
+  top: 0px;
+}
+div.footer {
+  bottom: 0px;
+}
+img.nav-button {
+  margin-left: 25px;
+  background-color: rgba(0, 0, 100, 0.85);
+}
+img.nav-button:hover{
+  cursor: pointer;
+}
+img.nav-button:active{
+  cursor: pointer;
+  opacity: 0.3;
+}
+a:link, a:visited{
+  color: rgba(0, 0, 255, 1);
+  text-decoration: none;
+}
+a.nav-link, a.nav-link:link, a.nav-link:visited{
+  color: white;
+}
+.shim-up{
+  margin-bottom: 5px;
+}
+.col-1 {
+  width: 100px;
+}
+.col-2 {
+  width: 220px;
+}
+.col-3 {
+  width: 300px;
+  padding: 10px;
+}
+.col-6 {
+  width: 98%;
+  padding: 10px;
+  position: relative;
+  left: -1%;
+  margin-bottom: 20px;
+}
+.backshadow {
+  width: 960px;
+  height: 960px;
+  background-color: rgba(0, 100, 200, 0.9);
+  position: fixed;
+}
+.invisible {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible !important;
+}
+.pull-right {
+  margin-left: 350px;
+}
+.poll-results{
+  font-style: italic;
+}
+.pointer {
+  cursor: pointer;
+}
+p.comment {
+  font-size: 0.9em;
+}
+form.col-2 {
+  margin-top: 2em;
+  font-size: 0.8em;
+}
+@keyframes slidein {
+  from {
+    }
+  to {
+    }
+}
+
+@media only screen and (max-width: 40em),
+  only screen and (max-device-width: 40em){
+    div.container{
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.065);
+      margin: 0px auto 0px auto;
+    }
+    div.fullpage{
+      width: 25em;
+      margin: 0px auto 0px auto;
+    }
+    .col-6 {
+      width: 97.5%;
+      position: left;
+      left: -2%;
+    }
+  }
+</style>
+
+<script type="text/javascript" src="{% static 'jQuery/index.js' %}"></script>
+<script type="text/javascript">
+
+  $('img.navigate').on('click', toggleNav);
+  function toggleNav(){
+  $('div.menu:not(:animated)').toggle(200, "linear");
+  }
+  function hideNav(){
+  $('div.menu:not(:animated)').hide(200, "linear");
+  }
+ $("div").not('div.menu').on('click', function(){
+    if (!($('div.menu').attr('display') == 'none') ){ hideNav(); }
+  });
+$("a.nav-link").on('click', function(){ //navigation bar links
+    if (!($('div.menu').attr('display') == 'none') ){ hideNav(); }
+  });
+  $("div.menu").on('mousedown', function(e){
+    var xPos1 = e.pageX; //record the initial x-position once motion is detected after mousedown
+    $(window).on('mousemove', function(e){
+      $("div.menu").on('mouseup', function(e){
+        var xPos2 = e.pageX;
+        if ( (xPos2-xPos1) < -20) { /*alert(xPos2-xPos1);*/ $("div.menu:not(:animated)").hide(200, "linear"); xPos1=xPos2=null; return; }; 
+      });
+      $(window).on('mouseup', function(e){ xPos1=xPos2=null; //clear out position variables if the menu does not catch the mouseup event
+      });
+    });
+  });
+</script>
+</body>
+</html>
