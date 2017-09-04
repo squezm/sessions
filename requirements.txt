@@ -6,13 +6,7 @@ modulegraph==0.10.4
 pbr==3.1.1
 psycopg2==2.6.2
 py2app==0.7.3
-pyOpenSSL==0.13.1
-pyparsing==2.0.1
-python-dateutil==1.5
 pytz==2013.7
-six==1.4.1
 virtualenv==15.1.0
 virtualenv-clone==0.2.6
 whitenoise==3.2
-xattr==0.6.4
-zope.interface==4.1.1
