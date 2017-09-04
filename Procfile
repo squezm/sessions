@@ -1,1 +1,1 @@
-web: gunicorn sessions.wsgi
+web: gunicorn msg_board.wsgi
