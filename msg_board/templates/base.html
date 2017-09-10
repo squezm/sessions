@@ -26,13 +26,12 @@
 <div class="container">
 
   <div class="header windowframe">
+    <!--img src="{% static 'images/nav.jpg' %}" class="nav-button navigate"-->
+    <span class="navigate fa fa-bars"></span>&nbsp;&nbsp;&nbsp;
     <a href="{% url 'msg_board:message_index' %}">
       <!--img src="{% static 'images/home.jpg' %}" class="nav-button shim-up"-->
       <span class="fa fa-home"></span>
-    </a>
-    <!--img src="{% static 'images/nav.jpg' %}" class="nav-button navigate"-->
-    <span class="navigate fa fa-bars"></span>
-
+    </a>&nbsp;&nbsp;
     <span class="header-text"> SESSIONS </span>
   </div>
 
@@ -59,6 +58,8 @@
 span.fa{
   font-size: 150%;
   color: rgba(240, 220, 20, 1);
+  position: relative;
+  padding: 0.4em;
 }
 span.fa:hover{
   cursor: pointer;
@@ -83,8 +84,8 @@ span.header-text{
   font-family: "neoteric";
   color: rgba(240, 220, 20, 1);
   position: relative;
-  top: -0.8em;
-  left: 0.6em;
+  top: .5em;
+  left: 5em;
 }
 p > label{
   text-align: right;
