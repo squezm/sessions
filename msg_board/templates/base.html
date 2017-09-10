@@ -5,12 +5,13 @@
 <head>
 <title>SESSIONS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css' %}" />
 <script type="text/javascript" src="{% static 'jQuery/jquery.js' %}"></script>
 </head>
 <body>
 
 <div class="menu">
-    
+
     <ul>
       <a href="{% url 'msg_board:message_index' %}" class="nav-link"><li class="menu-list">Home</li></a>
       <a href="{% url 'msg_board:create_account' %}" class="nav-link"><li class="menu-list">Sign Up</li></a>
@@ -28,10 +29,11 @@
     <img src="{% static 'images/nav.jpg' %}" class="nav-button navigate">
     <span class="header-text"> SESSIONS </span>
     <a href="{% url 'msg_board:message_index' %}">
-      <img src="{% static 'images/home.jpg' %}" class="nav-button shim-up">
+      <!--img src="{% static 'images/home.jpg' %}" class="nav-button shim-up"-->
+      <span class="fa fa-home"></span>
     </a>
   </div>
-  
+
   <div class="content">
   {% block content %}
   {% endblock content %}
@@ -279,7 +281,7 @@ $("a.nav-link").on('click', function(){ //navigation bar links
     $(window).on('mousemove', function(e){
       $("div.menu").on('mouseup', function(e){
         var xPos2 = e.pageX;
-        if ( (xPos2-xPos1) < -20) { /*alert(xPos2-xPos1);*/ $("div.menu:not(:animated)").hide(200, "linear"); xPos1=xPos2=null; return; }; 
+        if ( (xPos2-xPos1) < -20) { /*alert(xPos2-xPos1);*/ $("div.menu:not(:animated)").hide(200, "linear"); xPos1=xPos2=null; return; };
       });
       $(window).on('mouseup', function(e){ xPos1=xPos2=null; //clear out position variables if the menu does not catch the mouseup event
       });
