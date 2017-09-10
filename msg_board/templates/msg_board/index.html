@@ -49,7 +49,7 @@ var xhr = new XMLHttpRequest();
 var results; //global variable to store polls results
 
 function getResults() { //replace localhost with domain name in production
-xhr.open('GET', 'msg_board/vote', true);
+xhr.open('GET', 'vote', true);
 xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
