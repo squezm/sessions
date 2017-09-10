@@ -12,9 +12,9 @@
     </form>
     <p>
       <small>
-        <a href="{% url 'msg_board:create_account' %}">Create an account</a> | 
+        <a href="{% url 'msg_board:create_account' %}">Create an account</a> |
         <a href="{% url 'msg_board:guest_login' 'home' %}">Continue as a guest</a>
-      </small> 
+      </small>
     </p>
     {% endif %}
 
@@ -49,7 +49,7 @@ var xhr = new XMLHttpRequest();
 var results; //global variable to store polls results
 
 function getResults() { //replace localhost with domain name in production
-xhr.open('GET', 'http://localhost:8080/msg_board/vote', true);
+xhr.open('GET', 'msg_board/vote', true);
 xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
@@ -83,5 +83,3 @@ document
 $('h2').hide().fadeIn(2500);
 </script>
 {% endblock content %}
-
-
