@@ -26,13 +26,16 @@
 <div class="container">
 
   <div class="header windowframe">
-    <!--img src="{% static 'images/nav.jpg' %}" class="nav-button navigate"-->
-    <span class="navigate fa fa-bars"></span>
     <span class="header-text"> SESSIONS </span>
+  </div>
+
+  <div class="sidebar">
     <a href="{% url 'msg_board:message_index' %}">
       <!--img src="{% static 'images/home.jpg' %}" class="nav-button shim-up"-->
       <span class="fa fa-home"></span>
-    </a>
+    </a><br /><br />
+    <!--img src="{% static 'images/nav.jpg' %}" class="nav-button navigate"-->
+    <span class="navigate fa fa-bars"></span>
   </div>
 
   <div class="content">
@@ -55,9 +58,15 @@
   font-family: "neoteric";
   src: url("{% static 'fonts/NEOTERIC.ttf' %}");
 }
+div.sidebar{
+  position: fixed;
+}
 span.fa{
-  font-size: 300%;
+  font-size: 150%;
   color: rgba(240, 220, 20, 1);
+}
+span.fa:hover{
+  cursor: pointer;
 }
 body {
   user-select: none;
