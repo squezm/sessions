@@ -26,7 +26,8 @@
 <div class="container">
 
   <div class="header windowframe">
-    <img src="{% static 'images/nav.jpg' %}" class="nav-button navigate">
+    <!--img src="{% static 'images/nav.jpg' %}" class="nav-button navigate"-->
+    <span class="navigate fa fa-bars"></span>
     <span class="header-text"> SESSIONS </span>
     <a href="{% url 'msg_board:message_index' %}">
       <!--img src="{% static 'images/home.jpg' %}" class="nav-button shim-up"-->
@@ -53,6 +54,9 @@
 @font-face{
   font-family: "neoteric";
   src: url("{% static 'fonts/NEOTERIC.ttf' %}");
+
+span.fa{
+  font-size: 300%;
 }
 body {
   user-select: none;
@@ -263,7 +267,7 @@ form.col-2 {
 <script type="text/javascript" src="{% static 'jQuery/index.js' %}"></script>
 <script type="text/javascript">
 
-  $('img.navigate').on('click', toggleNav);
+  $('span.navigate').on('click', toggleNav);
   function toggleNav(){
   $('div.menu:not(:animated)').toggle(200, "linear");
   }
