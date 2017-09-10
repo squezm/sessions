@@ -6,11 +6,11 @@ class Location(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
-#        if ' ' in self.name:
-#            print(
-#                "Name contains whitespace."
-#                "Rename this location using the _ character instead of the space character."
-#                )
+        if ' ' in self.name:
+            print(
+                "Name contains whitespace."
+                "Rename this location using the _ character instead of the space character, and then delete the location with the whitespace."
+                )
         return self.name.replace("_", " ")
 
 
